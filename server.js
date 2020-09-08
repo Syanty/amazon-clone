@@ -2,9 +2,11 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const dotenv = require('dotenv')
+const dotenv = require("dotenv");
 
-dotenv.config()
+const User = require("./models/user");
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -27,7 +29,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => res.json("Hello Amazon Clone"));
-app.post("/", (req, res) => console.log(req.body.name));
+app.post("/", (req, res) => {
+  let user = new User();
+  user.name = req.body.name;
+  user.email = req.body.email;
+  user.password = req.body.password;
+
+  user.save((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+     res.json("User created successfully");
+    }
+  });
+});
 app.listen(port, (err) => {
   if (err) {
     console.log(err);
