@@ -12,4 +12,4 @@ const ProductSchema = new Schema({
   rating: [Number],
 });
 
-module.exports = mongoose.Schema("Product", ProductSchema);
+module.exports = mongoose.model("Product", ProductSchema);
