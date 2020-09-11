@@ -1,7 +1,7 @@
 #node js elements
 
 server/node_modules
-.env
+server/.env
 
 
 #nuxt js ignore elements
