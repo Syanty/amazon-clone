@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 const User = require("./models/user");
 
@@ -13,7 +14,7 @@ const port = 3000;
 
 mongoose.connect(
   process.env.DATABASE,
-  { useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify: false },
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
   (err) => {
     if (err) {
       console.log(err);
@@ -24,13 +25,12 @@ mongoose.connect(
 );
 
 //middlewares
+app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 app.get("/", (req, res) => res.json("Hello Amazon Clone"));
-
 
 //api routes
 const productRoutes = require("./routes/product");
