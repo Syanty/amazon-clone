@@ -11,7 +11,7 @@
 
           <div class="a-spacing-large"></div>
           <!-- Button -->
-          <a href="" class="a-button-buy-again">Add new Product</a>
+          <a href="/product" class="a-button-buy-again">Add new Product</a>
           <a href="" class="a-button-history margin-right-10"
             >Add new category</a
           >
@@ -37,6 +37,7 @@
             <!-- product rating -->
             <div class="a-row">
               <a href="">
+                <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
