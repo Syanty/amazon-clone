@@ -7,8 +7,8 @@ const upload = require("../middlewares/upload-photo");
 router.post("/products", upload.single("photo"), async (req, res) => {
   try {
     let product = new Product();
-    (product.owner = req.body.ownerID),
-    (product.category = req.body.categoryID),
+    (product.owner = req.body.owner),
+    (product.category = req.body.category),
     (product.title = req.body.title),
     (product.price = req.body.price),
     (product.description = req.body.description),
@@ -77,8 +77,8 @@ router.put("/products/:id", upload.single("photo"), async (req, res) => {
           price: req.body.price,
           stockQuantity: req.body.stockQuantity,
           photo: req.file.location,
-          category: req.body.categoryID,
-          owner: req.body.ownerID,
+          category: req.body.category,
+          owner: req.body.owner,
         },
       },
       {

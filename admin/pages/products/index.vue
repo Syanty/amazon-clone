@@ -11,6 +11,7 @@
             v-for="(category, index) in categories"
             :key="index"
             :value="category._id"
+            
             >{{ category.type }}</option
           >
         </select>
