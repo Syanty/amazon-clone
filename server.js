@@ -13,7 +13,7 @@ const port = 3000;
 
 mongoose.connect(
   process.env.DATABASE,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify: false },
   (err) => {
     if (err) {
       console.log(err);
