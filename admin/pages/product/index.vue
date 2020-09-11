@@ -95,7 +95,7 @@ export default {
     };
   },
   methods: {
-    onSelected(event) {
+   onSelected(event) {
       this.selectedFile = event.target.files[0];
     },
     async onAddProduct() {

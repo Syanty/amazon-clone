@@ -12,10 +12,10 @@
           <div class="a-spacing-large"></div>
           <!-- Button -->
           <a href="/product" class="a-button-buy-again">Add new Product</a>
-          <a href="" class="a-button-history margin-right-10"
+          <a href="/category" class="a-button-history margin-right-10"
             >Add new category</a
           >
-          <a href="" class="a-button-history margin-right-10">Add new Owner</a>
+          <a href="/owner" class="a-button-history margin-right-10">Add new Owner</a>
         </div>
       </div>
     </div>
@@ -84,11 +84,7 @@ export default {
 
 <style>
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  display: grid;
+  place-items: center;
 }
 </style>
