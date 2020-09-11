@@ -7,11 +7,14 @@ const upload = require("../middlewares/upload-photo");
 router.post("/products", upload.single("photo"), async (req, res) => {
   try {
     let product = new Product();
+    (product.owner = req.body.ownerID),
+    (product.category = req.body.categoryID),
     (product.title = req.body.title),
-      (product.description = req.body.description),
-      (product.photo = req.file.location),
-      (product.stockQuantity = req.body.stockQuantity),
-      await product.save();
+    (product.price = req.body.price),
+    (product.description = req.body.description),
+    (product.photo = req.file.location),
+    (product.stockQuantity = req.body.stockQuantity),
+    await product.save();
 
     res.json({
       status: true,
@@ -100,7 +103,7 @@ router.delete("/products/:id", async (req, res) => {
   try {
     let deleteProduct = await Product.findOneAndDelete({ _id: req.params.id });
 
-    if(deleteProduct){
+    if (deleteProduct) {
       res.json({
         status: true,
         message: "successfully deleted",
