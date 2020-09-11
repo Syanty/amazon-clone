@@ -11,11 +11,11 @@
 
           <div class="a-spacing-large"></div>
           <!-- Button -->
-          <a href="/product" class="a-button-buy-again">Add new Product</a>
-          <a href="/category" class="a-button-history margin-right-10"
+          <a href="/products" class="a-button-buy-again">Add new Product</a>
+          <a href="/categories" class="a-button-history margin-right-10"
             >Add new category</a
           >
-          <a href="/owner" class="a-button-history margin-right-10">Add new Owner</a>
+          <a href="/owners" class="a-button-history margin-right-10">Add new Owner</a>
         </div>
       </div>
     </div>
@@ -56,8 +56,8 @@
             </div>
             <!-- product buttons -->
             <div class="a-row">
-              <a href="" class="a-button-history margin-right-10">Update</a>
-              <a href="" class="a-button-history margin-right-10">Delete</a>
+              <a @click="updateProduct(product._id)" class="a-button-history margin-right-10">Update</a>
+              <a @click="deleteProduct" class="a-button-history margin-right-10">Delete</a>
             </div>
           </div>
         </div>
@@ -78,6 +78,12 @@ export default {
     } catch (error) {
       
     }
+  },
+  methods: {
+    updateProduct(id){
+      this.$router.push("/products/"+ id)
+    },
+    deleteProduct(){}
   },
 };
 </script>

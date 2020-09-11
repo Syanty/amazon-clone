@@ -19,6 +19,7 @@
       <div class="form-group">
         <label for="">Owner</label>
         <select class="form-control" v-model="owner">
+          
           <option
             v-for="(owner, index) in owners"
             :key="index"
