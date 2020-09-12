@@ -85,23 +85,40 @@
                 </span>
               </a>
               <span class="icp-nav-link-border"></span>
-              <nuxt-link
-                to="/register"
-                id="nav-link-accountList"
-                tabindex="0"
-                class="nav-a nav-a-2"
-              >
-                <span class="nav-line-1">
-                  Hello, SignIn
-                </span>
-                <span class="nav-line-2">
-                  Account &amp; Lists
-                  <span
-                    class="nav-icon nav-arrow"
-                    style="visibility:visible"
-                  ></span>
-                </span>
-              </nuxt-link>
+              <template v-if="$auth.$state.loggedIn">
+                <nuxt-link
+                  to="/register"
+                  id="nav-link-accountList"
+                  tabindex="0"
+                  class="nav-a nav-a-2"
+                >
+                  <span class="nav-line-1">
+                    Hello,
+                  </span>
+                  <span class="nav-line-2">
+                    {{$auth.$state.user.name}}
+                  </span>
+                </nuxt-link>
+              </template>
+              <template v-else>
+                <nuxt-link
+                  to="/register"
+                  id="nav-link-accountList"
+                  tabindex="0"
+                  class="nav-a nav-a-2"
+                >
+                  <span class="nav-line-1">
+                    Hello, SignIn
+                  </span>
+                  <span class="nav-line-2">
+                    Account &amp; Lists
+                    <span
+                      class="nav-icon nav-arrow"
+                      style="visibility:visible"
+                    ></span>
+                  </span>
+                </nuxt-link>
+              </template>
               <nuxt-link to="/orders" class="nav-a nav-a-2 nav-single-row-link">
                 <span class="nav-line-1"></span>
                 <span class="nav-line-2">Orders</span>
