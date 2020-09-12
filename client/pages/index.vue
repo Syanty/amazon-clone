@@ -27,14 +27,14 @@
                     <div class="row">
                       <!-- image -->
                       <div class="col-sm-3 text-center">
-                        <a href="#">
+                        <nuxt-link :to="`/products/${product._id}`">
                           <img
                             :src="product.photo"
                             style="width:150px"
                             alt=""
                             class="img-fluid"
                           />
-                        </a>
+                        </nuxt-link>
                       </div>
                       <div class="col-sm-9">
                         <div class="a-row a-spacing-small">
