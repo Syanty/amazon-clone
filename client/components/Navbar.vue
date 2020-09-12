@@ -87,7 +87,7 @@
               <span class="icp-nav-link-border"></span>
               <template v-if="$auth.$state.loggedIn">
                 <nuxt-link
-                  to="/register"
+                  to="/profile"
                   id="nav-link-accountList"
                   tabindex="0"
                   class="nav-a nav-a-2"
@@ -102,7 +102,7 @@
               </template>
               <template v-else>
                 <nuxt-link
-                  to="/register"
+                  to="/signup"
                   id="nav-link-accountList"
                   tabindex="0"
                   class="nav-a nav-a-2"
