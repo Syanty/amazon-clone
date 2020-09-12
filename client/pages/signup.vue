@@ -111,7 +111,7 @@ export default {
 
         let response = await this.$axios.post("/api/auth/signup", data);
         console.log(response)
-        if (response.status) {
+        if (response.success) {
             console.log(response.success)
           this.$auth.loginWith("local", {
             data: {
