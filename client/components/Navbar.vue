@@ -6,7 +6,7 @@
           <!-- logo -->
           <div class="col-sm-2">
             <div class="logo-area">
-              <a href="">
+              <a href="/">
                 <img src="/img/logo.png" alt="Logo" class="img-fluid" />
               </a>
             </div>
