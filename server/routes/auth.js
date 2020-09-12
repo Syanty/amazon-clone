@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const user = require("../models/user");
 const jwt = require("jsonwebtoken");
+const verifyToken = require("../middlewares/verify-token")
 
 /* signup user*/
 
@@ -36,5 +37,26 @@ router.post("/auth/signup", async (req, res) => {
       })
   }
 });
+
+/* profile api */
+
+router.get("/auth/user", verifyToken, async(req,res)=>{
+  try {
+    let foundUser = await user.findOne({_id: req.decoded._id})
+
+    if(foundUser){
+      res.json({
+        success:true,
+        message:"User found",
+        user: foundUser
+      })
+    }
+  } catch (error) {
+    res.status(500).json({
+      success:false,
+      message: error.message
+    })
+  }
+})
 
 module.exports = router
