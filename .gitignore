@@ -9,6 +9,8 @@ server/.env
 ### Node template
 
 admin/node_modules
+admin/.nuxt
+client/node_modules
 # Logs
 /logs
 *.log
