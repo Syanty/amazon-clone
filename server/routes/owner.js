@@ -14,7 +14,7 @@ router.post("/owners",Upload.single("photo"), async (req, res) => {
     await owner.save();
 
     res.json({
-      status: true,
+      success: true,
       message: "owner successfully added",
     });
   } catch (error) {
@@ -30,7 +30,7 @@ router.get("/owners", async (req, res) => {
     let owners = await Owner.find();
 
     res.json({
-      status: true,
+      success: true,
       owners: owners,
     });
   } catch (error) {

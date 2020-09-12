@@ -11,7 +11,7 @@ router.post("/categories", async (req, res) => {
     await category.save();
 
     res.json({
-      status: true,
+      success: true,
       message: "category successfully added",
     });
   } catch (error) {
@@ -27,7 +27,7 @@ router.get("/categories", async (req, res) => {
     let categories = await Category.find();
 
     res.json({
-      status: true,
+      success: true,
       categories: categories,
     });
   } catch (error) {

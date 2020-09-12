@@ -9,7 +9,7 @@ router.post("/auth/signup", async (req, res) => {
   try {
     if (!req.body.email || !req.body.password) {
       res.json({
-        status: false,
+        success: false,
         message: "Please provide email or password",
       });
     } else {
@@ -25,14 +25,14 @@ router.post("/auth/signup", async (req, res) => {
       });
 
       res.json({
-        status: true,
+        success: true,
         token: token,
         message: "successfully created new user",
       });
     }
   } catch (error) {
     res.status(500).json({
-      status: false,
+      success: false,
       message: error.message,
     });
   }

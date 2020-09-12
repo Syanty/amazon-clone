@@ -17,7 +17,7 @@ router.post("/products", upload.single("photo"), async (req, res) => {
     await product.save();
 
     res.json({
-      status: true,
+      success: true,
       message: "Successfully added",
     });
   } catch (error) {
@@ -34,7 +34,7 @@ router.get("/products", async (req, res) => {
     let products = await Product.find().populate("owner category").exec();
 
     res.json({
-      status: true,
+      success: true,
       products: products,
     });
   } catch (error) {
@@ -53,7 +53,7 @@ router.get("/products/:id", async (req, res) => {
     let product = await Product.findOne({ _id: req.params.id }).populate("owner category").exec();
 
     res.json({
-      status: true,
+      success: true,
       product: product,
     });
   } catch (error) {
@@ -87,7 +87,7 @@ router.put("/products/:id", upload.single("photo"), async (req, res) => {
     );
 
     res.json({
-      status: true,
+      success: true,
       updatedProduct: product,
     });
   } catch (error) {
@@ -105,7 +105,7 @@ router.delete("/products/:id", async (req, res) => {
 
     if (deleteProduct) {
       res.json({
-        status: true,
+        success: true,
         message: "successfully deleted",
       });
     }
