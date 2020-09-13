@@ -96,7 +96,7 @@
                     Hello,
                   </span>
                   <span class="nav-line-2">
-                    {{$auth.$state.user.name}}
+                    {{ $auth.$state.user.name }}
                   </span>
                 </nuxt-link>
               </template>
