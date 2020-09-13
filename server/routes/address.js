@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Address = require("../models/address");
 const verifyToken = require("../middlewares/verify-token")
+const axios = require("axios")
 //POST
 
 router.post("/addresses",verifyToken, async (req, res) => {
@@ -46,6 +47,21 @@ router.get("/addresses", verifyToken, async(req,res)=>{
             message: error.message,
           });
     }
+})
+
+
+//GET COUNTRIES USING THIRD PARTY API
+
+router.get("/countries", async(req,res)=>{
+  try {
+    let response = await axios.get("https://restcountries.eu/rest/v2/all")
+    res.json(response.data)
+  } catch (error) {
+    res.status(500).json({
+      success:false,
+      message:error.message
+    })
+  }
 })
 
 module.exports = router

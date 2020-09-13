@@ -98,7 +98,7 @@
                 (Author)
               </div>
               <div class="reviewGroup">
-                <no-ssr>
+                <client-only>
                   <star-rating
                     :rating="product.averageRating"
                     :show-rating="false"
@@ -131,7 +131,7 @@
                     ]"
                   >
                   </star-rating>
-                </no-ssr>
+                </client-only>
               </div>
               <hr style="margin-top: 10px;" />
               <!-- A tags Dummy Data -->
