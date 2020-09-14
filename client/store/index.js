@@ -35,6 +35,12 @@ export const mutations = {
       });
     }
   },
+  /* 
+    1. Find product in the cart
+    2. Change the quantity of the product
+    3. Update the length of cart
+    4. REplace old product with updated product
+  */
   changeQty(state,{product,qty}){
     let cartProduct = state.cart.find(prod=> prod._id === product._id)
     cartProduct.quantity = qty
@@ -49,7 +55,16 @@ export const mutations = {
     let indexOfproduct = state.cart.indexOf(cartProduct)
     state.cart.splice(indexOfproduct, 1, cartProduct);
 
-
+  },
+  /* 
+    1. Remove the product quantity from cartLenth
+    2. Get the index of product that we want to delete
+    3. Remove that product by using splice
+  */
+  removeProduct(state,product){
+    state.cartLength -= product.quantity
+    let indexOfproduct = state.cart.indexOf(product)
+    state.cart.splice(indexOfproduct,1)  
   }
 };
 export const actions = {
