@@ -29,7 +29,7 @@
                     Deliver To
                   </div>
                   <div class="nav-line-2" id="glow-ingress-line2">
-                    Bardaghat,Nepal
+                    {{$auth.$state.user.address.city}}
                   </div>
                 </div>
               </nuxt-link>

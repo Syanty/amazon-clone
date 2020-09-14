@@ -24,14 +24,14 @@
                   <li class="a-breadcrumb-divider">›</li>
                   <li class="active">
                     <a href="#">
-                      <span>New Address</span>
+                      <span>Update Address</span>
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
             <div class="a-section">
-              <h2>Add a new address</h2>
+              <h2>Update address</h2>
               <div class="a-section a-spacing-none a-spacing-top-small">
                 <b>
                   Or pick up your packages at your convenience from our
@@ -50,7 +50,13 @@
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">Country/Region</label>
                     <select class="a-select-option" v-model="country">
-                      <option :value="country.name" v-for="country in countries" :key="country.alpha2Code">{{country.name}}</option>
+                      <option
+                        :value="country.name"
+                        v-for="country in countries"
+                        :key="country.alpha2Code"
+                        :placeholder="address.country"
+                        >{{ country.name }}</option
+                      >
                     </select>
                   </div>
                   <!-- Full name -->
@@ -61,6 +67,7 @@
                       class="a-input-text"
                       style="width: 100%;"
                       v-model="fullName"
+                      :placeholder="address.fullName"
                     />
                   </div>
                   <!-- Street Address -->
@@ -70,15 +77,15 @@
                       type="text"
                       class="a-input-text"
                       style="width: 100%;"
-                      placeholder="Street and number, P.O. box, c/o."
                       v-model="streetAddress1"
+                      :placeholder="address.streetAddress"
                     />
                     <!-- Street Address 2 -->
                     <input
                       type="text"
                       class="a-input-text a-spacing-top-small"
                       style="width: 100%;"
-                      placeholder="Apartment, suite, unit, building, floor, etc."
+                      :placeholder="address.streetAddress"
                       v-model="streetAddress2"
                     />
                   </div>
@@ -90,6 +97,7 @@
                       class="a-input-text"
                       style="width: 100%;"
                       v-model="city"
+                      :placeholder="address.city"
                     />
                   </div>
                   <!-- State -->
@@ -102,6 +110,7 @@
                       class="a-input-text"
                       style="width: 100%;"
                       v-model="state"
+                      :placeholder="address.state"
                     />
                   </div>
                   <!-- Zip Code -->
@@ -112,6 +121,7 @@
                       class="a-input-text"
                       style="width: 100%;"
                       v-model="zipCode"
+                      :placeholder="address.zipCode"
                     />
                   </div>
                   <!-- Phone Number -->
@@ -122,6 +132,7 @@
                       class="a-input-text"
                       style="width: 100%;"
                       v-model="phoneNumber"
+                      :placeholder="address.phoneNumber"
                     />
                     <div class="a-section a-spacing-none a-spacing-top-micro">
                       <span class="a-size-mini"
@@ -139,7 +150,7 @@
                       address?</label
                     >
                     <textarea
-                      placeholder="Provide details such as building description, a nearby landmark, or other navigation instructions"
+                      :placeholder="address.deliverInstructions"
                       style="height:6em; width: 100%;"
                       v-model="deliverInstructions"
                     ></textarea>
@@ -154,7 +165,7 @@
                       type="text"
                       class="a-input-text"
                       style="width: 100%;"
-                      placeholder="1234"
+                      :placeholder="address.securityCode"
                       v-model="securityCode"
                     />
                   </div>
@@ -190,7 +201,9 @@
                   <div class="a-spacing-top-large">
                     <span class="a-button-register">
                       <span class="a-button-inner">
-                        <span class="a-button-text" @click="onSubmitAddress">Add address</span>
+                        <span class="a-button-text" @click="onSubmitAddress"
+                          >Update address</span
+                        >
                       </span>
                     </span>
                   </div>
@@ -208,15 +221,22 @@
 </template>
 <script>
 export default {
-  async asyncData({$axios}) {
+  async asyncData({ $axios, params }) {
     try {
-      let countries = await $axios.$get("/api/countries")
+      let countriesData = $axios.$get("/api/countries");
+      let addressData = $axios.$get("/api/addresses/" + params.id);
 
-      return{
-        countries:countries
-      }
+      const [countriesRes, addressRes] = await Promise.all([
+        countriesData,
+        addressData
+      ]);
+
+      return {
+        countries: countriesRes,
+        address: addressRes.address
+      };
     } catch (error) {
-      
+      console.log(error);
     }
   },
   data() {
@@ -248,11 +268,13 @@ export default {
           securityCode: this.securityCode
         };
 
-        let response = this.$axios.$post("/api/addresses", data);
-       
-        this.$router.push("/address")
+        let response = this.$axios.$put(
+          "/api/addresses/" + this.$route.params.id,
+          data
+        );
+        this.$router.push("/address");
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
   }

@@ -42,7 +42,7 @@ router.post("/auth/signup", async (req, res) => {
 
 router.get("/auth/user", verifyToken, async (req, res) => {
   try {
-    let foundUser = await user.findOne({ _id: req.decoded._id });
+    let foundUser = await user.findOne({ _id: req.decoded._id }).populate("address").exec();
 
     if (foundUser) {
       res.json({

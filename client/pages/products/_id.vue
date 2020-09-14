@@ -332,7 +332,7 @@
                   <div class="a-spacing-top-small">
                     <div class="a-section a-spacing-none">
                       <div class="a-section a-spacing-none a-spacing-top-mini">
-                        This item shipts to
+                        This item ships to
                         <b>California</b>
                         <b>Get it by Monday, Sept 23 - Monday, Sept. 30</b>
                         Choose this date at checkout
