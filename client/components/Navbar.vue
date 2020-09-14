@@ -29,7 +29,7 @@
                     Deliver To
                   </div>
                   <div class="nav-line-2" id="glow-ingress-line2">
-                    {{$auth.$state.user.address.city}}
+                    {{ address }}
                   </div>
                 </div>
               </nuxt-link>
@@ -131,7 +131,7 @@
                   id="nav-cart-count"
                   class="nav-cart-count nav-cart-0"
                   aria-hidden="true"
-                  >0</span
+                  >{{getCartLength}}</span
                 >
               </nuxt-link>
             </div>
@@ -143,9 +143,21 @@
 </template>
 <script>
 import Search from "../components/Search";
+import {mapGetters} from "vuex"
 export default {
   components: {
     Search
-  }
+  },
+  data() {
+    return {
+      address:""
+    }
+  },
+  mounted() { 
+    this.address = this.$auth.$state.user.address.city
+  },
+  computed: {
+    ...mapGetters(["getCartLength"])
+  },
 };
 </script>
