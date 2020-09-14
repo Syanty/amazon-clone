@@ -17,7 +17,7 @@
                   </div>
                 </div>
                 <!-- List of the item -->
-                <div class="sc-list-body" v-for="product in getCart" :key="product._id">
+                <div class="sc-list-body" v-for="product in getCartItems" :key="product._id">
                   <div class="sc-list-item-border">
                     <div class="a-row a-spacing-top-base a-spacing-base">
                       <div class="row">
@@ -125,7 +125,7 @@
                   <div>
                     <span class="a-spacing-small a-button-primary a-button-icon">
                       <span class="a-button-inner">
-                        <a href="#" class="a-button-text">Proceed to checkout</a>
+                        <nuxt-link to="/placeorder" class="a-button-text">Proceed to checkout</nuxt-link>
                       </span>
                     </span>
                   </div>
@@ -197,7 +197,7 @@
 import {mapGetters} from 'vuex'
 export default {
   computed: {
-    ...mapGetters(["getCart","getCartLength","getCartTotalPrice"])
+    ...mapGetters(["getCartItems","getCartLength","getCartTotalPrice"])
   },
   methods: {
     onChangeQuantity(event,product){

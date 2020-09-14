@@ -6,7 +6,7 @@ export const getters = {
   getCartLength(state) {
     return state.cartLength;
   },
-  getCart(state) {
+  getCartItems(state) {
     return state.cart;
   },
   getCartTotalPrice(state){
